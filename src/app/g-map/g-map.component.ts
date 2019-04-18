@@ -2,6 +2,7 @@ import { styledMap } from './../../assets/mapStyles/styledMap';
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { ScriptLoaderService } from '../script-loader.service';
 import { HttpClient } from '@angular/common/http';
+import { mapNumber } from 'src/assets/functions/mapNumber';
 
 
 const apiKey = 'AIzaSyAwVnwE1bEZf_Bkk_pSkGM0XlBSXJocVUY';
@@ -63,6 +64,17 @@ export class GMapComponent implements AfterViewInit {
       this.map.data.addListener('mouseout', (function (e) {
         this.legend.nativeElement.style.display = 'none';
       }).bind(this));
+
+      // style map according to name
+      this.map.data.setStyle(feature => {
+        const lon = feature.getProperty('AREA');
+        const value = 255 - Math.round(mapNumber(lon, 0, 5, 0, 255));
+        const color = 'rgb(' + value + ',' + (value * 15) + ',' + 150 + ')';
+        return {
+          fillColor: color,
+          strokeWeight: 0.5
+        };
+      });
     });
   }
 }
