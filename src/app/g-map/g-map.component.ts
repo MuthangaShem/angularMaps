@@ -29,7 +29,7 @@ export class GMapComponent implements AfterViewInit {
     this.load.loadScript(url, 'gmap', () => {
       this.maps = window['google']['maps'];
       console.log(this.maps);
-      const loc = new this.maps.LatLng(-1.28333, 36.81667);
+      const loc = new this.maps.LatLng(0.4, 36.81667);
 
       const darkmap = new this.maps.StyledMapType(styledMap, { name: 'Dark Map' });
 
@@ -38,7 +38,7 @@ export class GMapComponent implements AfterViewInit {
       };
 
       this.map = new this.maps.Map(this.mapElm.nativeElement, {
-        zoom: 11,
+        zoom: 6.5,
         center: loc,
         scrollwheel: true,
         panControl: false,
@@ -53,6 +53,11 @@ export class GMapComponent implements AfterViewInit {
       });
       this.map.data.loadGeoJson('assets/kenyan-counties.geojson');
 
+      // event listener for mouse hover
+      this.map.data.addListener('mouseover', (function (e) {
+        this.legend.nativeElement.style.display = 'block';
+        this.infoBox.nativeElement.innerText = e.feature.getProperty('COUNTY');
+      }).bind(this));
     });
   }
 }
