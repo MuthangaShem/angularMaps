@@ -23,6 +23,7 @@ export class GMapComponent implements AfterViewInit {
   private maps: any;
   private map: any;
   private coords: any;
+  private infowindow: any;
 
   constructor(private load: ScriptLoaderService, private http: HttpClient) { }
 
@@ -75,6 +76,18 @@ export class GMapComponent implements AfterViewInit {
           strokeWeight: 0.5
         };
       });
+
+      // add pop when you click on a county
+      this.map.data.addListener('click', (function (e) {
+        console.log(e.latLng);
+        this.infowindow.setPosition(e.latLng);
+        this.infowindow.setContent(`<div class="overlay">
+        ${e.feature.getProperty('COUNTY')}
+        </div>`);
+        this.infowindow.open(this.map);
+      }).bind(this));
+      this.infowindow = new this.maps.InfoWindow();
     });
+
   }
 }
