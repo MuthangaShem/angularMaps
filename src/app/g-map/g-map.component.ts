@@ -3,6 +3,7 @@ import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { ScriptLoaderService } from '../script-loader.service';
 import { HttpClient } from '@angular/common/http';
 
+
 const apiKey = 'AIzaSyAwVnwE1bEZf_Bkk_pSkGM0XlBSXJocVUY';
 const url = 'https://maps.googleapis.com/maps/api/js?key=' + apiKey + '&libraries=visualization';
 
@@ -28,7 +29,7 @@ export class GMapComponent implements AfterViewInit {
     this.load.loadScript(url, 'gmap', () => {
       this.maps = window['google']['maps'];
       console.log(this.maps);
-      const loc = new this.maps.LatLng(51.561638, -0.14);
+      const loc = new this.maps.LatLng(-1.28333, 36.81667);
 
       const darkmap = new this.maps.StyledMapType(styledMap, { name: 'Dark Map' });
 
@@ -50,6 +51,7 @@ export class GMapComponent implements AfterViewInit {
           position: this.maps.ControlPosition.RIGHT_BOTTOM
         }
       });
+      this.map.data.loadGeoJson('assets/kenyan-counties.geojson');
 
     });
   }
