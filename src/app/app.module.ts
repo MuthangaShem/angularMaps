@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { GMapComponent } from './g-map/g-map.component';
 
 import { ScriptLoaderService } from './script-loader.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ScriptLoaderService } from './script-loader.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [ScriptLoaderService],
   bootstrap: [AppComponent],

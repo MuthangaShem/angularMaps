@@ -15,6 +15,8 @@ const url = 'https://maps.googleapis.com/maps/api/js?key=' + apiKey + '&librarie
 export class GMapComponent implements AfterViewInit {
 
   @ViewChild('mapElement') mapElm: ElementRef;
+  @ViewChild('legend') legend: ElementRef;
+  @ViewChild('info') infoBox: ElementRef;
 
   private maps: any;
   private map: any;
@@ -24,7 +26,7 @@ export class GMapComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.load.loadScript(url, 'gmap', () => {
-      this.maps = window[`google`][`maps`];
+      this.maps = window['google']['maps'];
       console.log(this.maps);
       const loc = new this.maps.LatLng(51.561638, -0.14);
 
@@ -48,6 +50,7 @@ export class GMapComponent implements AfterViewInit {
           position: this.maps.ControlPosition.RIGHT_BOTTOM
         }
       });
+
     });
   }
 }
