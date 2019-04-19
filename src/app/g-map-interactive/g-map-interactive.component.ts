@@ -198,7 +198,11 @@ export class GMapInteractiveComponent implements AfterViewInit {
               geometry: new maps.Data.Polygon([points])
             }));
             break;
-
+          case 'polyline':
+            this.map.data.add(new maps.Data.Feature({
+              geometry: new maps.Data.LineString(event.overlay.getPath().getArray())
+            }));
+            break;
           default:
             console.log('end');
         }
