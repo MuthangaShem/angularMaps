@@ -125,6 +125,10 @@ export class GMapInteractiveComponent implements AfterViewInit {
             draggable: true
           }
         });
+        break;
+      case 'pan':
+        this.drawingManager.setDrawingMode(null);
+        break;
     }
   }
 
