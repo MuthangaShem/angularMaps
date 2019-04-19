@@ -98,6 +98,20 @@ export class GMapInteractiveComponent implements AfterViewInit {
           }
         });
         break;
+      case 'polyline':
+        this.drawingManager.setDrawingMode(maps.drawing.OverlayType.POLYLINE);
+        this.drawingManager.setOptions({
+          polylineOptions: {
+            fillColor: '#00b801',
+            fillOpacity: 0.5,
+            strokeWeight: 2,
+            strokeColor: '#00b801',
+            clickable: true,
+            editable: true,
+            draggable: true
+          }
+        });
+        break;
     }
   }
 
