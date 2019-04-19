@@ -21,9 +21,29 @@ export class OlMapComponent implements AfterViewInit {
 
   constructor(private load: ScriptLoaderService) { }
 
+  rotate(direction) {
+    console.log(direction);
+    if (direction === 'anti-clockWise') {
+      const rotation = this.view.getRotation() - 0.3;
+      console.log(rotation);
+      this.view.animate({
+        rotation
+      });
+    } else if (direction === 'clockWise') {
+      const rotation = this.view.getRotation() + 0.3;
+      console.log(rotation);
+      this.view.animate({
+        rotation
+      });
+    } else {
+      this.view.animate({
+        rotation: 0
+      });
+    }
+  }
+
 
   draw(type) {
-    const maps = window['ol'];
     switch (type) {
       case 'point':
         this.map.removeInteraction(this.polygon);
