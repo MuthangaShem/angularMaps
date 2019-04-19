@@ -15,15 +15,42 @@ export class OlMapComponent implements AfterViewInit {
   private view: any;
   private map: any;
   private point: any;
+  private line: any;
+  private polygon: any;
+  private circle: any;
 
   constructor(private load: ScriptLoaderService) { }
+
 
   draw(type) {
     const maps = window['ol'];
     switch (type) {
       case 'point':
-        console.log('point activated: ' + type);
+        this.map.removeInteraction(this.polygon);
+        this.map.removeInteraction(this.circle);
+        this.map.removeInteraction(this.line);
         this.map.addInteraction(this.point);
+        break;
+      case 'line':
+        this.map.removeInteraction(this.point);
+        this.map.removeInteraction(this.polygon);
+        this.map.removeInteraction(this.circle);
+        this.map.addInteraction(this.line);
+        break;
+      case 'polygon':
+        this.map.removeInteraction(this.point);
+        this.map.removeInteraction(this.polygon);
+        this.map.removeInteraction(this.circle);
+        this.map.removeInteraction(this.line);
+        this.map.addInteraction(this.polygon);
+        break;
+      case 'circle':
+        this.map.removeInteraction(this.point);
+        this.map.removeInteraction(this.line);
+        this.map.removeInteraction(this.polygon);
+        this.map.addInteraction(this.circle);
+        break;
+
     }
   }
 
@@ -32,6 +59,7 @@ export class OlMapComponent implements AfterViewInit {
     this.load.loadScript(url, 'omap', () => {
 
       const ol = window['ol'];
+      console.log(ol);
 
       this.osm = new ol.layer.Tile({
         source: new ol.source.OSM()
@@ -43,7 +71,6 @@ export class OlMapComponent implements AfterViewInit {
       });
 
       const source = new ol.source.Vector({ wrapX: false });
-
 
       this.stamen = new ol.layer.Tile({
         source: new ol.source.Stamen({
@@ -68,7 +95,10 @@ export class OlMapComponent implements AfterViewInit {
       });
       // this.map.addInteraction(this.point);
 
-
+      this.line = new ol.interaction.Draw({
+        source,
+        type: 'LineString'
+      });
 
     });
 
