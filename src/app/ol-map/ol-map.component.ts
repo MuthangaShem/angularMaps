@@ -100,6 +100,11 @@ export class OlMapComponent implements AfterViewInit {
         type: 'LineString'
       });
 
+      this.polygon = new ol.interaction.Draw({
+        source,
+        type: 'Polygon'
+      });
+
     });
 
   }
