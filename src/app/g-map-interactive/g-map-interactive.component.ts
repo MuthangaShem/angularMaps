@@ -129,6 +129,13 @@ export class GMapInteractiveComponent implements AfterViewInit {
       case 'pan':
         this.drawingManager.setDrawingMode(null);
         break;
+      case 'save':
+        this.drawingManager.setDrawingMode(null);
+        this.map.data.toGeoJson(function (obj) {
+          console.log(JSON.stringify(obj));
+          console.log(obj);
+        });
+        break;
     }
   }
 
