@@ -203,6 +203,14 @@ export class GMapInteractiveComponent implements AfterViewInit {
               geometry: new maps.Data.LineString(event.overlay.getPath().getArray())
             }));
             break;
+          case 'circle':
+            this.map.data.add(new maps.Data.Feature({
+              properties: {
+                radius: event.overlay.getRadius()
+              },
+              geometry: new maps.Data.Point(event.overlay.getCenter())
+            }));
+            break;
           default:
             console.log('end');
         }
