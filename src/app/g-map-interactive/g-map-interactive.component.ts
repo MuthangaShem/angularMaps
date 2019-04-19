@@ -70,6 +70,20 @@ export class GMapInteractiveComponent implements AfterViewInit {
           }
         });
         break;
+      case 'polygon':
+        this.drawingManager.setDrawingMode(maps.drawing.OverlayType.POLYGON);
+        this.drawingManager.setOptions({
+          polygonOptions: {
+            fillColor: '#9c4d4f',
+            fillOpacity: 0.5,
+            strokeWeight: 2,
+            strokeColor: '#401619',
+            clickable: true,
+            editable: true,
+            draggable: true
+          }
+        });
+        break;
     }
   }
 
