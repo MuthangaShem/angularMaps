@@ -15,10 +15,32 @@ export class GMapInteractiveComponent implements AfterViewInit {
   @ViewChild('legend') legend: ElementRef;
   @ViewChild('info') infoBox: ElementRef;
 
+  private map: any;
+  private maps: any;
+
   constructor(private load: ScriptLoaderService) { }
 
   ngAfterViewInit(): void {
     this.load.loadScript(url, 'gmap', () => {
+
+      const maps = window['google']['maps'];
+      console.log(maps);
+      const loc = new maps.LatLng(-1.2, 36.81667);
+
+      this.map = new maps.Map(this.mapElm.nativeElement, {
+        zoom: 11,
+        center: loc,
+        scrollwheel: true,
+        panControl: false,
+        mapTypeControl: false,
+        zoomControl: true,
+        streetViewControl: false,
+        scaleControl: true,
+        zoomControlOptions: {
+          style: maps.ZoomControlStyle.LARGE,
+          position: maps.ControlPosition.RIGHT_BOTTOM
+        }
+      });
     });
   }
 
