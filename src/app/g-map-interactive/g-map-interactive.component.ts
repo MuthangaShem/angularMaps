@@ -54,6 +54,22 @@ export class GMapInteractiveComponent implements AfterViewInit {
           }
         });
         break;
+      case 'marker':
+        this.drawingManager.setDrawingMode(maps.drawing.OverlayType.MARKER);
+        let point = new window['google']['maps'].MarkerImage('assets/point.png',
+          null,
+          null,
+          null,
+          new maps.Size(30, 30)
+        );
+        this.drawingManager.setOptions({
+          markerOptions: {
+            icon: point,
+            clickable: true,
+            draggable: true
+          }
+        });
+        break;
     }
   }
 
