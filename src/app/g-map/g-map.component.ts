@@ -53,7 +53,7 @@ export class GMapComponent implements AfterViewInit {
           position: this.maps.ControlPosition.RIGHT_BOTTOM
         }
       });
-      this.map.data.addGeoJson('assets/kenyan-counties.geojson');
+      this.map.data.loadGeoJson('assets/kenyan-counties.geojson');
 
       // event listener for mouse hover to display name
       this.map.data.addListener('mouseover', (function (e) {
