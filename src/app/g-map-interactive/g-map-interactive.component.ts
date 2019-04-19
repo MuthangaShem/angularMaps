@@ -112,6 +112,19 @@ export class GMapInteractiveComponent implements AfterViewInit {
           }
         });
         break;
+      case 'circle':
+        this.drawingManager.setDrawingMode(maps.drawing.OverlayType.CIRCLE);
+        this.drawingManager.setOptions({
+          circleOptions: {
+            fillColor: '#00b801',
+            fillOpacity: 0.5,
+            strokeWeight: 2,
+            strokeColor: '#00b801',
+            clickable: true,
+            editable: true,
+            draggable: true
+          }
+        });
     }
   }
 
