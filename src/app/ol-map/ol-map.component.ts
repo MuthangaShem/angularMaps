@@ -53,7 +53,7 @@ export class OlMapComponent implements AfterViewInit {
 
 
       const vector = new ol.layer.Vector({
-        source: source,
+        source,
       });
 
       this.map = new ol.Map({
@@ -63,7 +63,7 @@ export class OlMapComponent implements AfterViewInit {
       });
 
       this.point = new ol.interaction.Draw({
-        source: source,
+        source,
         type: 'Point'
       });
       // this.map.addInteraction(this.point);
