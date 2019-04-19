@@ -14,8 +14,18 @@ export class OlMapComponent implements AfterViewInit {
   private osm: any;
   private view: any;
   private map: any;
+  private point: any;
 
   constructor(private load: ScriptLoaderService) { }
+
+  draw(type) {
+    const maps = window['ol'];
+    switch (type) {
+      case 'point':
+        console.log('point activated: ' + type);
+        this.map.addInteraction(this.point);
+    }
+  }
 
   ngAfterViewInit() {
 
@@ -43,7 +53,7 @@ export class OlMapComponent implements AfterViewInit {
 
 
       const vector = new ol.layer.Vector({
-        source: source
+        source: source,
       });
 
       this.map = new ol.Map({
@@ -51,6 +61,13 @@ export class OlMapComponent implements AfterViewInit {
         layers: [this.osm, vector],
         view: this.view
       });
+
+      this.point = new ol.interaction.Draw({
+        source: source,
+        type: 'Point'
+      });
+      // this.map.addInteraction(this.point);
+
 
 
     });
