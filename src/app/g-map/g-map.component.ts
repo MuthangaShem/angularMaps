@@ -53,7 +53,7 @@ export class GMapComponent implements AfterViewInit {
           position: this.maps.ControlPosition.RIGHT_BOTTOM
         }
       });
-      this.map.data.loadGeoJson('assets/kenyan-counties.geojson');
+      this.map.data.addGeoJson('assets/kenyan-counties.geojson');
 
       // event listener for mouse hover to display name
       this.map.data.addListener('mouseover', (function (e) {
@@ -61,7 +61,7 @@ export class GMapComponent implements AfterViewInit {
         this.infoBox.nativeElement.innerText = e.feature.getProperty('COUNTY');
       }).bind(this));
 
-      // remove county name after hovering out
+      // remove county name if not hovering on geojson
       this.map.data.addListener('mouseout', (function (e) {
         this.legend.nativeElement.style.display = 'none';
       }).bind(this));
