@@ -104,6 +104,10 @@ export class OlMapComponent implements AfterViewInit {
         source,
         type: 'Polygon'
       });
+      this.circle = new ol.interaction.Draw({
+        source,
+        type: 'Circle'
+      });
 
     });
 
