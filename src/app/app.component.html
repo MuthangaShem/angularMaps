@@ -1,6 +1,11 @@
-<div style="margin-bottom: 15px;">
-  <a href="./gmap">Google Map Simple</a>
-  <a href="./gmapInteractive">Google Map Interactions</a>
-  <a href="./ol">Open Layers</a>
-</div>
+<mat-toolbar color="primary">
+  <span> Angular Material App With Tab and Routing </span>
+  <span class="example-fill-remaining-space"></span>
+</mat-toolbar>
+<nav mat-tab-nav-bar>
+  <a mat-tab-link *ngFor="let link of navLinks" [routerLink]="link.link" routerLinkActive #rla="routerLinkActive"
+    [active]="rla.isActive">{{link.label}}
+  </a>
+</nav>
+
 <router-outlet></router-outlet>
