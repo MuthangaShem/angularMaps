@@ -41,6 +41,9 @@ export class GMapInteractiveComponent implements AfterViewInit {
           position: maps.ControlPosition.RIGHT_BOTTOM
         }
       });
+      const drawControl = document.getElementById('draw-buttons');
+      this.map.controls[maps.ControlPosition.TOP_LEFT].push(drawControl);
+
     });
   }
 
