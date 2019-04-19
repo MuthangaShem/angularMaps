@@ -180,6 +180,25 @@ export class GMapInteractiveComponent implements AfterViewInit {
               geometry: new maps.Data.Polygon([event.overlay.getPath().getArray()])
             }));
             break;
+          case 'rectangle':
+            let bounds = event.overlay.getBounds();
+            let points = [
+              bounds.getSouthWest(),
+              {
+                lat: bounds.getSouthWest().lat(),
+                lng: bounds.getNorthEast().lng()
+              },
+              bounds.getNorthEast(),
+              {
+                lng: bounds.getSouthWest().lng(),
+                lat: bounds.getNorthEast().lat()
+              }
+            ];
+            this.map.data.add(new maps.Data.Feature({
+              geometry: new maps.Data.Polygon([points])
+            }));
+            break;
+
           default:
             console.log('end');
         }
