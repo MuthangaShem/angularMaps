@@ -84,6 +84,20 @@ export class GMapInteractiveComponent implements AfterViewInit {
           }
         });
         break;
+      case 'square':
+        this.drawingManager.setDrawingMode(maps.drawing.OverlayType.RECTANGLE);
+        this.drawingManager.setOptions({
+          rectangleOptions: {
+            fillColor: '#fff82e',
+            fillOpacity: 0.5,
+            strokeWeight: 2,
+            strokeColor: '#c8a535',
+            clickable: true,
+            editable: true,
+            draggable: true
+          }
+        });
+        break;
     }
   }
 
