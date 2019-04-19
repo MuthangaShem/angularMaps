@@ -8,13 +8,15 @@ import { GMapComponent } from './g-map/g-map.component';
 
 import { ScriptLoaderService } from './script-loader.service';
 import { HttpClientModule } from '@angular/common/http';
+import { OlMapComponent } from './ol-map/ol-map.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     GMapComponent,
-    GMapInteractiveComponent
+    GMapInteractiveComponent,
+    OlMapComponent
   ],
   imports: [
     BrowserModule,

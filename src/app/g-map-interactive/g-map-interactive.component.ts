@@ -211,6 +211,9 @@ export class GMapInteractiveComponent implements AfterViewInit {
               geometry: new maps.Data.Point(event.overlay.getCenter())
             }));
             break;
+          case 'marker':
+            console.log(event);
+            break;
           default:
             console.log('end');
         }
