@@ -18,6 +18,7 @@ export class OlMapComponent implements AfterViewInit {
   private line: any;
   private polygon: any;
   private circle: any;
+  private snapit: any;
 
   constructor(private load: ScriptLoaderService) { }
 
@@ -74,6 +75,23 @@ export class OlMapComponent implements AfterViewInit {
     }
   }
 
+  snap() {
+    const snap = document.getElementById('snap');
+    if (snap.innerHTML === 'Snap') {
+      this.map.addInteraction(this.snapit);
+      snap.innerHTML = 'Unsnap';
+      snap.style.color = 'white';
+      snap.style.borderColor = 'blue';
+      snap.style.backgroundColor = '#4d4bee';
+    } else {
+      this.map.removeInteraction(this.snapit);
+      snap.innerHTML = 'Snap';
+      snap.style.borderColor = '#d8d8d8';
+      snap.style.color = 'black';
+      snap.style.backgroundColor = 'white';
+    }
+  }
+
   ngAfterViewInit() {
 
     this.load.loadScript(url, 'omap', () => {
@@ -97,7 +115,6 @@ export class OlMapComponent implements AfterViewInit {
           layer: 'toner'
         })
       });
-
 
       const vector = new ol.layer.Vector({
         source,
@@ -124,9 +141,15 @@ export class OlMapComponent implements AfterViewInit {
         source,
         type: 'Polygon'
       });
+
       this.circle = new ol.interaction.Draw({
         source,
-        type: 'Circle'
+        type: 'Circle',
+      });
+
+      this.snapit = new ol.interaction.Snap({
+        source: vector.getSource(),
+        pixelTolerance: 30
       });
 
     });
