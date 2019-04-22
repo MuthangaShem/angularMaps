@@ -110,6 +110,10 @@ export class GMapComponent implements AfterViewInit {
   loadPoints(){
     const button = document.getElementById('points');
     if(button.innerHTML === 'Load Points') {
+      // this.map = new this.maps.Map(this.mapElm.nativeElement, {
+      //   zoom: 11.6,
+      //   center: new this.maps.LatLng(-1.3, 36.81667)
+      // });
       this.map.data.loadGeoJson('assets/accidents.geojson');
       const antenna = new this.maps.MarkerImage('assets/danger.png',
         null,

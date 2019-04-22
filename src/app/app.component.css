@@ -1,0 +1,24 @@
+.nav-bar {
+	justify-content: space-between;
+}
+
+.span {
+	padding-right: 10px;
+}
+
+a {
+	text-decoration: none;
+	font-weight: 500;
+	cursor: pointer;
+	color: white;
+	padding-right: 30px;
+}
+
+span :hover {
+	color: aqua;
+	border: solid aqua;
+	border-radius: 10%;
+	border-width: 1px;
+	padding: 2px;
+	margin: 3px;
+}
