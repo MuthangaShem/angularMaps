@@ -1,4 +1,12 @@
 <div style="text-align:center">
-  <div class="map" #mapElement></div>
+    <div id="interact-button">
+      <button id="points" (click)="loadPoints()">Load Points</button>
+      <button id="heat map" (click)="createHeatMap()">Create Heatmap</button>
+      <button id="counties" (click)="loadCounties()">Load Counties</button>
+      <button id="theme" (click)="changeType()">Dark Theme</button>
+      <!-- <button id="cluster" (click)="cluster(true, 10)">Cluster</button> -->
+    </div>
+    <div class="map" #mapElement></div>
+
 </div>
-<p #legend class="hide">County Name: <span #info></span></p>
+<p #legend class="hide">Name: <span #info></span></p>
