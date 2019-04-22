@@ -1,20 +1,20 @@
 .map {
-  margin: auto;
-  width: 100%;
-  height: 90vh;
+	margin: auto;
+	width: 100%;
+	height: 90vh;
 }
 #draw-buttons {
-  display: flex;
-  flex-direction: row;
+	display: flex;
+	flex-direction: column;
 }
 
 #draw-buttons img {
-  background-color: #3fcccc;
-  margin: 5px;
-  border-radius: 5px;
-  box-shadow: 10px 5px 5px #c5c5c5;
-  padding: 5px;
-  height: 30px;
-  width: auto;
-  cursor: pointer;
+	background-color: #3fcccc;
+	margin: 5px;
+	border-radius: 5px;
+	box-shadow: 10px 5px 5px #c5c5c5;
+	padding: 5px;
+	height: 30px;
+	width: auto;
+	cursor: pointer;
 }
